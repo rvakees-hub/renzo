@@ -39,14 +39,13 @@ const FeaturedVideo: React.FC = () => {
                 {/* Video 1 */}
                 <div className="video-card relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(33,101,252,0.15)] bg-black/50 backdrop-blur-sm group hover:border-brand-blue/30 transition-colors duration-500">
                     <iframe 
+                        src="https://player.vimeo.com/video/1149803204?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/t5j1co_bfRM" 
-                        title="renzobro testimonial 1" 
                         frameBorder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allowFullScreen 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                        referrerPolicy="strict-origin-when-cross-origin" 
+                        title="20250824_141647_0_COMPRESSED"
                         className="absolute inset-0 w-full h-full"
                     ></iframe>
                 </div>
@@ -54,14 +53,13 @@ const FeaturedVideo: React.FC = () => {
                 {/* Video 2 */}
                 <div className="video-card relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(33,101,252,0.15)] bg-black/50 backdrop-blur-sm group hover:border-brand-blue/30 transition-colors duration-500">
                     <iframe 
+                        src="https://player.vimeo.com/video/1149802038?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
                         width="100%" 
                         height="100%" 
-                        src="https://www.youtube.com/embed/wOwjlMST6fo" 
-                        title="renzobro testimonial 2" 
                         frameBorder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allowFullScreen 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                        referrerPolicy="strict-origin-when-cross-origin" 
+                        title="copy_3482326D-AE44-468F-9029-E1A707982D20"
                         className="absolute inset-0 w-full h-full"
                     ></iframe>
                 </div>
