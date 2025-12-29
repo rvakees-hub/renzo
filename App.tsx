@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import Hero from './components/Hero';
-import FacebookReviews from './components/FacebookReviews';
-import FeaturedVideo from './components/FeaturedVideo';
-import AboutInstructor from './components/AboutInstructor';
-import Pricing from './components/Pricing';
-import FinalCTA from './components/FinalCTA';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Facebook, Instagram } from 'lucide-react';
+
+// Lazy load below-the-fold components
+const FacebookReviews = React.lazy(() => import('./components/FacebookReviews'));
+const FeaturedVideo = React.lazy(() => import('./components/FeaturedVideo'));
+const AboutInstructor = React.lazy(() => import('./components/AboutInstructor'));
+const Pricing = React.lazy(() => import('./components/Pricing'));
+const FinalCTA = React.lazy(() => import('./components/FinalCTA'));
 
 // Register standard plugins if available in environment, 
 // though we usually import them in the components directly.
@@ -49,11 +51,26 @@ const App: React.FC = () => {
   return (
     <main className="bg-brand-black min-h-screen text-white w-full overflow-x-hidden selection:bg-brand-blue selection:text-white">
       <Hero />
-      <FacebookReviews />
-      <FeaturedVideo />
-      <AboutInstructor />
-      <Pricing />
-      <FinalCTA />
+      
+      <Suspense fallback={<div className="h-96 bg-brand-black" />}>
+        <FacebookReviews />
+      </Suspense>
+      
+      <Suspense fallback={<div className="h-96 bg-brand-black" />}>
+        <FeaturedVideo />
+      </Suspense>
+      
+      <Suspense fallback={<div className="h-screen bg-brand-black" />}>
+        <AboutInstructor />
+      </Suspense>
+      
+      <Suspense fallback={<div id="pricing" className="h-96 bg-brand-black" />}>
+        <Pricing />
+      </Suspense>
+      
+      <Suspense fallback={<div className="h-96 bg-brand-black" />}>
+        <FinalCTA />
+      </Suspense>
       
       {/* Footer */}
       <footer className="py-8 border-t border-white/10 bg-black text-center text-gray-600 text-sm">

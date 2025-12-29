@@ -46,7 +46,12 @@ const VideoTestimonials: React.FC = () => {
             <div key={video.id} className="video-card group relative rounded-2xl overflow-hidden cursor-pointer bg-brand-dark/50 shadow-xl border border-white/5 hover:border-brand-blue/30 transition-all duration-300">
               {/* Thumbnail */}
               <div className="aspect-[4/3] w-full relative overflow-hidden">
-                <img src={video.thumbnailUrl} alt={video.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" />
+                <img 
+                  src={video.thumbnailUrl} 
+                  alt={video.name} 
+                  loading="lazy" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" 
+                />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                 
                 {/* Play Button */}

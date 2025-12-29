@@ -69,7 +69,15 @@ const AboutInstructor: React.FC = () => {
            <div className="absolute inset-0 bg-brand-blue/20 blur-[120px] rounded-full pointer-events-none" />
            <div ref={imageRef} className="relative z-10 w-full max-w-md h-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
-             <img src="https://res.cloudinary.com/duhqg4u4k/image/upload/v1766867306/Clients/20251227_135137_dg6vip.jpg" alt="Renzo" className="w-full h-full object-cover" />
+             {/* Optimization: Added f_auto,q_auto,w_800 to URL and loading=lazy */}
+             <img 
+                src="https://res.cloudinary.com/duhqg4u4k/image/upload/f_auto,q_auto,w_800/v1766867306/Clients/20251227_135137_dg6vip.jpg" 
+                alt="Renzo" 
+                className="w-full h-full object-cover" 
+                loading="lazy"
+                width="600"
+                height="800"
+             />
              <div className="absolute bottom-8 left-8 z-20">
                <p className="font-serif italic text-3xl mb-1">Kantharuban Isaiyalan </p>
                <p className="text-brand-blue font-medium tracking-wide text-sm uppercase">Investment strategist & Financial Educator</p>

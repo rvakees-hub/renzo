@@ -79,6 +79,7 @@ const FacebookReviews: React.FC = () => {
                       style={{border:'none', overflow:'hidden'}} 
                       scrolling="no" 
                       frameBorder="0" 
+                      loading="lazy"
                       allowFullScreen={true} 
                       allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                       className="w-full"
