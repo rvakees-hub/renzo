@@ -11,40 +11,63 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Connected to your SheetDB API
+  const SHEET_DB_URL = 'https://sheetdb.io/api/v1/e435yenqk08be';
+
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      // Track Lead
-      await trackEvent('Lead', {
-        content_name: 'Renzo Academy Course Interest',
-        user_data: {
-            em: formData.email,
-            ph: formData.phone
-        },
-        custom_data: {
-            name: formData.name
-        }
-      });
-      
-      // Simulate submission delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Clear form and close
-      setFormData({ name: '', email: '', phone: '' });
-      onClose();
-      
-      // Success feedback
-      alert("Thank you! Your spot is reserved. We will contact you shortly with payment details.");
-      
-    } catch (error) {
-      console.error("Submission failed", error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    const submitData = async () => {
+      try {
+        // 1. Send data to Google Sheets via SheetDB
+        await fetch(SHEET_DB_URL, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            data: {
+              "Date": new Date().toLocaleString(),
+              "Name": formData.name,
+              "Email": formData.email,
+              "Phone": formData.phone
+            }
+          })
+        });
+
+        // 2. Track Event (Facebook CAPI/Pixel)
+        await trackEvent('Lead', {
+            content_name: 'Renzo Academy Course Interest',
+            user_data: {
+                em: formData.email,
+                ph: formData.phone
+            },
+            custom_data: {
+                name: formData.name
+            }
+        });
+      } catch (error) {
+        console.error("Data submission error:", error);
+        // We catch errors here so the redirect below still executes
+      }
+    };
+
+    // FAIL-SAFE:
+    // Run the data submission, but if it takes longer than 2 seconds, 
+    // proceed to redirect anyway so the user doesn't get stuck.
+    await Promise.race([
+        submitData(),
+        new Promise(resolve => setTimeout(resolve, 2000))
+    ]);
+
+    // 3. Redirect to PayHere
+    // We purposely do NOT close the modal so the "Redirecting..." spinner remains visible 
+    // while the browser handles the navigation.
+    window.location.href = "https://payhere.lk/pay/o6e4bc6cd";
   };
 
   return (
@@ -78,7 +101,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
               className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-blue/50 focus:ring-1 focus:ring-brand-blue/50 transition-all"
-              placeholder="e.g. Kantharuban Isaiyalan"
+              placeholder="e.g. Kasun Perera"
             />
           </div>
 
@@ -90,7 +113,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
               className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-blue/50 focus:ring-1 focus:ring-brand-blue/50 transition-all"
-              placeholder="e.g. Isaiyalan@email.com"
+              placeholder="e.g. kasun@email.com"
             />
           </div>
 
@@ -113,10 +136,10 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
           >
             {isSubmitting ? (
                 <>
-                    <Loader2 size={20} className="animate-spin" /> Processing...
+                    <Loader2 size={20} className="animate-spin" /> Redirecting to Payment...
                 </>
             ) : (
-                'Get Started Now'
+                'Proceed to Payment'
             )}
           </button>
           
