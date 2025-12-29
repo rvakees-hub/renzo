@@ -9,7 +9,7 @@ const FinalCTA: React.FC = () => {
       
       <div className="container mx-auto px-4 relative z-10 text-center">
         <h2 className="text-5xl md:text-7xl font-serif italic mb-6">
-          Ready to Start Your <br/> Trading Journey?
+          Ready to Start Your <br/> Investment Journey?
         </h2>
         <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
           Don't let another year pass wishing you had started. The best time to plant a tree was 20 years ago. The second best time is now.

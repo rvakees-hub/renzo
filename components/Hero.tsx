@@ -1,7 +1,35 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Play, Users, Star, ShieldCheck, TrendingUp, TrendingDown } from 'lucide-react';
+import { ArrowRight, Users, Star, ShieldCheck, TrendingUp, TrendingDown } from 'lucide-react';
 import gsap from 'gsap';
 import { HERO_TICKER_ITEMS } from '../constants';
+
+// Declare custom element for TypeScript
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        'media-id'?: string;
+        aspect?: string;
+        autoplay?: boolean;
+        muted?: boolean;
+      };
+    }
+  }
+}
+
+// Also declare in global JSX namespace in case standard React types are used where JSX is global
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        'media-id'?: string;
+        aspect?: string;
+        autoplay?: boolean;
+        muted?: boolean;
+      };
+    }
+  }
+}
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -117,30 +145,14 @@ const Hero: React.FC = () => {
         
         {/* Subtitle */}
         <p ref={subRef} className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-          Learn proven trading strategies and technical analysis from <span className="text-white font-medium">Renzo</span> — a professional CSE trader who has helped 500+ Sri Lankan students achieve financial freedom.
+          Learn proven investment strategies,fundamental analysis and technical analysis from <span className="text-white font-medium">Renzo</span> — a professional CSE trader who has helped 500+ Sri Lankan students achieve financial freedom.
         </p>
 
         {/* Video Section - Centered */}
-        <div ref={videoRef} className="w-full max-w-4xl mb-14 relative group cursor-pointer z-20">
+        <div ref={videoRef} className="w-full max-w-4xl mb-14 relative group z-20">
            <div className="absolute -inset-1 bg-gradient-to-r from-brand-blue/20 to-purple-500/20 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition duration-1000"></div>
            <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-blue/20 bg-brand-gray/50 backdrop-blur-sm">
-              <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-black/10 transition-colors duration-500"></div>
-              <img src="https://picsum.photos/1200/675?random=1" alt="Renzo Trading Masterclass" className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" />
-              
-              <div className="absolute inset-0 z-20 flex items-center justify-center">
-                 <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:scale-110 transition-all duration-300 group-hover:bg-white/20 shadow-[0_0_50px_rgba(33,101,252,0.3)]">
-                   <div className="w-20 h-20 rounded-full bg-brand-blue flex items-center justify-center shadow-[0_0_40px_rgba(33,101,252,0.6)] relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-white/30"></div>
-                      <Play className="w-8 h-8 text-white ml-1 fill-white relative z-10" />
-                   </div>
-                 </div>
-              </div>
-
-              {/* Video Overlay Text */}
-              <div className="absolute bottom-6 left-6 z-20 hidden sm:flex items-center gap-3 bg-black/60 backdrop-blur-md p-3 pr-5 rounded-xl border border-white/10">
-                 <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
-                 <span className="text-sm font-medium text-white">Watch Course Intro</span>
-              </div>
+              <wistia-player media-id="s46leuqw1t" aspect="1.7777777777777777" autoplay></wistia-player>
            </div>
         </div>
 

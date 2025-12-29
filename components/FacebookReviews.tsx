@@ -52,7 +52,7 @@ const FacebookReviews: React.FC = () => {
              ))}
            </div>
            <h2 className="text-4xl md:text-5xl font-serif italic mb-4 text-white">What Our Students Say</h2>
-           <p className="text-gray-400 text-lg">Real results from real traders in Sri Lanka</p>
+           <p className="text-gray-400 text-lg">Real results from real investers in Sri Lanka</p>
         </div>
 
         {/* Reviews Grid */}

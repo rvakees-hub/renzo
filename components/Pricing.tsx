@@ -33,7 +33,7 @@ const Pricing: React.FC = () => {
                 <p className="text-gray-400 mb-8 text-sm">One-time payment. Lifetime access.</p>
 
                 <button className="w-full py-4 bg-brand-blue text-white rounded-xl font-bold text-lg hover:bg-brand-blue/90 transition-all hover:scale-[1.02] shadow-[0_0_20px_rgba(33,101,252,0.4)] mb-4">
-                  Enroll Now & Start Trading
+                  Enroll Now & Start investment
                 </button>
                 
                 <div className="flex items-center justify-center gap-2 text-xs text-gray-500 mb-8">
@@ -42,7 +42,7 @@ const Pricing: React.FC = () => {
 
                 <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                    <p className="text-sm text-gray-300 text-center">
-                     "This course pays for itself. I recovered the fee in my first 3 trades." <br/>
+                     "My First Month of Dividend Income" <br/>
                      <span className="text-brand-blue font-bold mt-2 block">- Dilshan, Colombo</span>
                    </p>
                 </div>
@@ -57,9 +57,9 @@ const Pricing: React.FC = () => {
                     "Lifetime Access to Materials",
                     "Private WhatsApp Community Access",
                     "Weekly Live Q&A Sessions",
-                    "Trading Templates & Checklists",
+                    "Investment Templates & Checklists",
                     "Bonus: Stock Screener Tool",
-                    "Bonus: Trading Plan Workbook",
+                    "Bonus: Investment Plan Workbook",
                     "Certificate of Completion"
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm text-gray-300">

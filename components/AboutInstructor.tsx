@@ -71,8 +71,8 @@ const AboutInstructor: React.FC = () => {
              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
              <img src="https://res.cloudinary.com/duhqg4u4k/image/upload/v1766867306/Clients/20251227_135137_dg6vip.jpg" alt="Renzo" className="w-full h-full object-cover" />
              <div className="absolute bottom-8 left-8 z-20">
-               <p className="font-serif italic text-3xl mb-1">Renzo</p>
-               <p className="text-brand-blue font-medium tracking-wide text-sm uppercase">Pro CSE Trader</p>
+               <p className="font-serif italic text-3xl mb-1">Kantharuban Isaiyalan </p>
+               <p className="text-brand-blue font-medium tracking-wide text-sm uppercase">Investment strategist & Financial Educator</p>
              </div>
            </div>
         </div>
@@ -81,15 +81,15 @@ const AboutInstructor: React.FC = () => {
         <div className="w-full lg:w-1/2 instructor-content">
           <h2 className="text-4xl md:text-6xl font-serif italic mb-6">Meet Your Mentor</h2>
           <p className="text-xl text-white font-light mb-6">
-            "My goal is simple: To empower Sri Lankans to achieve financial freedom through proper stock market education, not gambling."
+            "My goal is simple: To empower Sri Lankans to achieve financial freedom through proper stock market education."
           </p>
           
           <div className="space-y-4 text-gray-400 mb-8 leading-relaxed">
             <p>
-              With over 5 years of active trading experience in the Colombo Stock Exchange, I've built a profitable portfolio from the ground up using purely technical analysis and disciplined risk management.
+              With over 5 years of active investment experience in Srilanka Stock Market, I've built a profitable portfolio from the ground up using purely fundamental analysis and disciplined risk management.
             </p>
             <p>
-              I don't just teach theory. I show you exactly how I trade, how I analyze charts, and how I manage my emotions when real money is on the line.
+              I don't just teach theory. I show you exactly how I Invest, how I analyze fundamentals, and how I manage my emotions when real money is on the line.
             </p>
           </div>
 
