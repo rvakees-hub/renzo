@@ -2,6 +2,17 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const FinalCTA: React.FC = () => {
+  const handleSecureSpotClick = () => {
+    if (window.fbq) {
+      window.fbq('track', 'InitiateCheckout', {
+        content_name: 'Renzo Academy Course',
+        status: 'final_cta_click'
+      });
+    }
+    // Smooth scroll to pricing
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="py-24 relative overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 bg-brand-blue/80 mix-blend-multiply opacity-20" />
@@ -15,7 +26,10 @@ const FinalCTA: React.FC = () => {
           Don't let another year pass wishing you had started. The best time to plant a tree was 20 years ago. The second best time is now.
         </p>
         
-        <button className="px-10 py-5 bg-brand-blue text-white rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-[0_0_50px_rgba(33,101,252,0.5)] flex items-center gap-3 mx-auto">
+        <button 
+          onClick={handleSecureSpotClick}
+          className="px-10 py-5 bg-brand-blue text-white rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-[0_0_50px_rgba(33,101,252,0.5)] flex items-center gap-3 mx-auto"
+        >
           Secure Your Spot Now <ArrowRight />
         </button>
         

@@ -29,6 +29,9 @@ declare global {
       };
     }
   }
+  interface Window {
+    fbq: any;
+  }
 }
 
 const Hero: React.FC = () => {
@@ -104,6 +107,17 @@ const Hero: React.FC = () => {
 
   }, []);
 
+  const handleRegisterClick = () => {
+    if (window.fbq) {
+      window.fbq('track', 'InitiateCheckout', {
+        content_name: 'Renzo Academy Course',
+        status: 'hero_cta_click'
+      });
+    }
+    // Smooth scroll to pricing
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section ref={heroRef} className="relative min-h-screen w-full flex flex-col items-center pt-24 pb-32 overflow-hidden">
       {/* Background Effects */}
@@ -158,7 +172,10 @@ const Hero: React.FC = () => {
 
         {/* CTA Button */}
         <div ref={ctaRef} className="mb-20 flex flex-col items-center z-20">
-          <button className="group relative px-12 py-6 bg-brand-blue text-white rounded-full font-bold text-xl overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(33,101,252,0.6)] border border-white/10">
+          <button 
+            onClick={handleRegisterClick}
+            className="group relative px-12 py-6 bg-brand-blue text-white rounded-full font-bold text-xl overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(33,101,252,0.6)] border border-white/10"
+          >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out" />
             <span className="relative flex items-center gap-3">
               Register Now <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />

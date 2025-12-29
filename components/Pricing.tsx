@@ -5,8 +5,21 @@ import { PRICING_DATA } from '../constants';
 const Pricing: React.FC = () => {
   const { originalPrice, currentPrice, discount } = PRICING_DATA;
 
+  const handleEnrollClick = () => {
+    if (window.fbq) {
+      window.fbq('track', 'InitiateCheckout', {
+        content_name: 'Renzo Academy Course',
+        value: currentPrice,
+        currency: 'LKR',
+        status: 'pricing_enroll_click'
+      });
+    }
+    // Redirect logic would go here, e.g., window.location.href = 'payment_link';
+    console.log("Redirecting to payment...");
+  };
+
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="pricing" className="py-24 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[500px] bg-brand-blue/10 blur-[120px] rounded-full pointer-events-none" />
 
@@ -32,7 +45,10 @@ const Pricing: React.FC = () => {
                 </div>
                 <p className="text-gray-400 mb-8 text-sm">One-time payment. Lifetime access.</p>
 
-                <button className="w-full py-4 bg-brand-blue text-white rounded-xl font-bold text-lg hover:bg-brand-blue/90 transition-all hover:scale-[1.02] shadow-[0_0_20px_rgba(33,101,252,0.4)] mb-4">
+                <button 
+                  onClick={handleEnrollClick}
+                  className="w-full py-4 bg-brand-blue text-white rounded-xl font-bold text-lg hover:bg-brand-blue/90 transition-all hover:scale-[1.02] shadow-[0_0_20px_rgba(33,101,252,0.4)] mb-4"
+                >
                   Enroll Now & Start investment
                 </button>
                 
