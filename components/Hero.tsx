@@ -145,7 +145,7 @@ const Hero: React.FC = () => {
         
         {/* Subtitle */}
         <p ref={subRef} className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-          Learn proven investment strategies,fundamental analysis and technical analysis from <span className="text-white font-medium">Renzo</span> — a professional CSE trader who has helped 500+ Sri Lankan students achieve financial freedom.
+          Learn proven investment strategies,fundamental analysis and technical analysis from <span className="text-white font-medium">Renzo</span> — a professional CSE invester who has helped 500+ Sri Lankan students achieve financial freedom.
         </p>
 
         {/* Video Section - Centered */}
