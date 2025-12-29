@@ -3,7 +3,11 @@ import { Check, ShieldCheck } from 'lucide-react';
 import { PRICING_DATA } from '../constants';
 import { trackEvent } from '../utils/analytics';
 
-const Pricing: React.FC = () => {
+interface PricingProps {
+  onOpenModal: () => void;
+}
+
+const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
   const { originalPrice, currentPrice, discount } = PRICING_DATA;
 
   const handleEnrollClick = () => {
@@ -15,8 +19,8 @@ const Pricing: React.FC = () => {
       status: 'pricing_enroll_click'
     });
 
-    // Redirect logic would go here, e.g., window.location.href = 'payment_link';
-    console.log("Redirecting to payment...");
+    // Open Lead Modal
+    onOpenModal();
   };
 
   return (

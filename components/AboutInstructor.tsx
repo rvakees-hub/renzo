@@ -121,9 +121,7 @@ const AboutInstructor: React.FC = () => {
             ))}
           </div>
 
-          <button className="px-8 py-4 bg-white text-black hover:bg-brand-blue hover:text-white transition-colors rounded-xl font-bold text-lg shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(33,101,252,0.5)] transform hover:scale-105 duration-300">
-            Learn from Renzo
-          </button>
+          
         </div>
       </div>
     </section>

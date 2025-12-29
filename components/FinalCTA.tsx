@@ -2,7 +2,11 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { trackEvent } from '../utils/analytics';
 
-const FinalCTA: React.FC = () => {
+interface FinalCTAProps {
+  onOpenModal: () => void;
+}
+
+const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
   const handleSecureSpotClick = () => {
     // Use the dual-tracking utility
     trackEvent('InitiateCheckout', {
@@ -10,8 +14,8 @@ const FinalCTA: React.FC = () => {
       status: 'final_cta_click'
     });
     
-    // Smooth scroll to pricing
-    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+    // Open Lead Modal
+    onOpenModal();
   };
 
   return (

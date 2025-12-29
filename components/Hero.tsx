@@ -4,6 +4,10 @@ import gsap from 'gsap';
 import { HERO_TICKER_ITEMS } from '../constants';
 import { trackEvent } from '../utils/analytics';
 
+interface HeroProps {
+  onOpenModal: () => void;
+}
+
 // Declare custom element for TypeScript
 declare module 'react' {
   namespace JSX {
@@ -18,7 +22,7 @@ declare module 'react' {
   }
 }
 
-const Hero: React.FC = () => {
+const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
@@ -97,8 +101,8 @@ const Hero: React.FC = () => {
       status: 'hero_cta_click'
     });
     
-    // Smooth scroll to pricing
-    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+    // Open modal instead of scrolling
+    onOpenModal();
   };
 
   return (

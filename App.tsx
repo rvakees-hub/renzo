@@ -1,5 +1,6 @@
-import React, { useEffect, Suspense } from 'react';
+import React, { useEffect, Suspense, useState } from 'react';
 import Hero from './components/Hero';
+import LeadFormModal from './components/LeadFormModal';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Facebook, Instagram } from 'lucide-react';
@@ -45,12 +46,14 @@ const WhatsAppIcon = ({ size = 20, className = "" }: { size?: number, className?
 );
 
 const App: React.FC = () => {
-  // Global smooth scroll setup could go here if using Lenis or similar,
-  // For now we rely on native smooth scroll via CSS html { scroll-behavior: smooth }
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <main className="bg-brand-black min-h-screen text-white w-full overflow-x-hidden selection:bg-brand-blue selection:text-white">
-      <Hero />
+      <Hero onOpenModal={openModal} />
       
       <Suspense fallback={<div className="h-96 bg-brand-black" />}>
         <FacebookReviews />
@@ -65,12 +68,14 @@ const App: React.FC = () => {
       </Suspense>
       
       <Suspense fallback={<div id="pricing" className="h-96 bg-brand-black" />}>
-        <Pricing />
+        <Pricing onOpenModal={openModal} />
       </Suspense>
       
       <Suspense fallback={<div className="h-96 bg-brand-black" />}>
-        <FinalCTA />
+        <FinalCTA onOpenModal={openModal} />
       </Suspense>
+
+      <LeadFormModal isOpen={isModalOpen} onClose={closeModal} />
       
       {/* Footer */}
       <footer className="py-8 border-t border-white/10 bg-black text-center text-gray-600 text-sm">
