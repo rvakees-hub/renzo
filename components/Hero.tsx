@@ -57,36 +57,35 @@ const Hero: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    tl.fromTo(heroRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1 }
-    )
-    .fromTo(headlineRef.current,
+    // IMPORTANT: We do NOT animate heroRef opacity here to preserve LCP.
+    // The background should paint immediately.
+    
+    tl.fromTo(headlineRef.current,
       { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-      "-=0.5"
+      { y: 0, opacity: 1, duration: 0.8 },
+      0.1 // Start almost immediately
     )
     .fromTo(subRef.current,
       { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+      { y: 0, opacity: 1, duration: 0.8 },
       "-=0.6"
     )
     .fromTo(videoRef.current,
-      { scale: 0.9, opacity: 0, y: 40 },
-      { scale: 1, opacity: 1, y: 0, duration: 1, ease: "power3.out" },
-      "-=0.4"
+      { scale: 0.95, opacity: 0, y: 30 },
+      { scale: 1, opacity: 1, y: 0, duration: 1 },
+      "-=0.6"
     )
     .fromTo(ctaRef.current,
       { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-      "-=0.6"
+      { y: 0, opacity: 1, duration: 0.6 },
+      "-=0.7"
     )
     .fromTo(trustRef.current,
       { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-      "-=0.4"
+      { y: 0, opacity: 1, duration: 0.6 },
+      "-=0.5"
     );
 
   }, []);
