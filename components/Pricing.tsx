@@ -43,7 +43,7 @@ const Pricing: React.FC = () => {
                 <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                    <p className="text-sm text-gray-300 text-center">
                      "My First Month of Dividend Income" <br/>
-                     <span className="text-brand-blue font-bold mt-2 block">- Dilshan, Colombo</span>
+                     <span className="text-brand-blue font-bold mt-2 block">- Amuthan, Colombo</span>
                    </p>
                 </div>
               </div>
