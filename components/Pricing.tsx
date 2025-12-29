@@ -1,19 +1,20 @@
 import React from 'react';
 import { Check, ShieldCheck } from 'lucide-react';
 import { PRICING_DATA } from '../constants';
+import { trackEvent } from '../utils/analytics';
 
 const Pricing: React.FC = () => {
   const { originalPrice, currentPrice, discount } = PRICING_DATA;
 
   const handleEnrollClick = () => {
-    if (window.fbq) {
-      window.fbq('track', 'InitiateCheckout', {
-        content_name: 'Renzo Academy Course',
-        value: currentPrice,
-        currency: 'LKR',
-        status: 'pricing_enroll_click'
-      });
-    }
+    // Use the dual-tracking utility
+    trackEvent('InitiateCheckout', {
+      content_name: 'Renzo Academy Course',
+      value: currentPrice,
+      currency: 'LKR',
+      status: 'pricing_enroll_click'
+    });
+
     // Redirect logic would go here, e.g., window.location.href = 'payment_link';
     console.log("Redirecting to payment...");
   };

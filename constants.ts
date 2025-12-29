@@ -67,8 +67,8 @@ export const FACEBOOK_REVIEWS = [
   {
     id: 'fb8',
     name: 'Thanu Sri',
-    src: 'https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmohamed.nahfeesnaseer%2Fposts%2Fpfbid02SDgdxbKavyFwJ6sGtXYkRV8fsGLny5yUJ514obi7Xu3GpzcwmSCSHDoQeixnudVGl&show_text=true&width=500',
-    height: 250
+    src: 'https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fthanulakshan.sriskantharaja%2Fposts%2Fpfbid0137N73KBsMucYUZJskTFVCWELptHFap6NvZy9Mmj33dXcMsJgwkVYWh7pWFUQAH1l&show_text=true&width=500',
+    height: 304
   }
 ];
 

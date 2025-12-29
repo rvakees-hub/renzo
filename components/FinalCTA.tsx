@@ -1,14 +1,15 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
 
 const FinalCTA: React.FC = () => {
   const handleSecureSpotClick = () => {
-    if (window.fbq) {
-      window.fbq('track', 'InitiateCheckout', {
-        content_name: 'Renzo Academy Course',
-        status: 'final_cta_click'
-      });
-    }
+    // Use the dual-tracking utility
+    trackEvent('InitiateCheckout', {
+      content_name: 'Renzo Academy Course',
+      status: 'final_cta_click'
+    });
+    
     // Smooth scroll to pricing
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
   };

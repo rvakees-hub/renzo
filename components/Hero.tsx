@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Users, Star, ShieldCheck, TrendingUp, TrendingDown } from 'lucide-react';
 import gsap from 'gsap';
 import { HERO_TICKER_ITEMS } from '../constants';
+import { trackEvent } from '../utils/analytics';
 
 // Declare custom element for TypeScript
 declare module 'react' {
@@ -14,23 +15,6 @@ declare module 'react' {
         muted?: boolean;
       };
     }
-  }
-}
-
-// Also declare in global JSX namespace in case standard React types are used where JSX is global
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        'media-id'?: string;
-        aspect?: string;
-        autoplay?: boolean;
-        muted?: boolean;
-      };
-    }
-  }
-  interface Window {
-    fbq: any;
   }
 }
 
@@ -108,12 +92,12 @@ const Hero: React.FC = () => {
   }, []);
 
   const handleRegisterClick = () => {
-    if (window.fbq) {
-      window.fbq('track', 'InitiateCheckout', {
-        content_name: 'Renzo Academy Course',
-        status: 'hero_cta_click'
-      });
-    }
+    // Use the dual-tracking utility
+    trackEvent('InitiateCheckout', {
+      content_name: 'Renzo Academy Course',
+      status: 'hero_cta_click'
+    });
+    
     // Smooth scroll to pricing
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
   };
