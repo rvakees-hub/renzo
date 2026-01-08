@@ -78,21 +78,28 @@ const App: React.FC = () => {
       <LeadFormModal isOpen={isModalOpen} onClose={closeModal} />
       
       {/* Footer */}
-      <footer className="py-8 border-t border-white/10 bg-black text-center text-gray-600 text-sm">
-        <p>&copy; {new Date().getFullYear()} Renzo Academy. Design & Developed by <a href="https://www.upbold.global/" target="_blank" rel="noopener noreferrer" className="text-brand-blue hover:text-white transition-colors">UPBOLD</a></p>
-        <div className="flex justify-center gap-6 mt-4 items-center">
-          <a href="https://www.facebook.com/p/Renzo-Academy-61577952878476/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#1877F2] transition-colors hover:scale-110 transform duration-300" aria-label="Facebook">
-             <Facebook size={20} />
-          </a>
-          <a href="https://www.instagram.com/renzoacademy" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#E1306C] transition-colors hover:scale-110 transform duration-300" aria-label="Instagram">
-             <Instagram size={20} />
-          </a>
-          <a href="https://www.tiktok.com/@renzo.bro" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#ff0050] transition-colors hover:scale-110 transform duration-300" aria-label="TikTok">
-             <TikTokIcon size={20} />
-          </a>
-          <a href="https://whatsapp.com/channel/0029Vaz0qXE6hENuVgR3J71W" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#25D366] transition-colors hover:scale-110 transform duration-300" aria-label="WhatsApp">
-             <WhatsAppIcon size={20} />
-          </a>
+      <footer className="py-12 border-t border-white/10 bg-black text-center text-gray-600">
+        <div className="container mx-auto px-4">
+            <div className="flex justify-center gap-6 mb-8 items-center">
+              <a href="https://www.facebook.com/p/Renzo-Academy-61577952878476/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#1877F2] transition-colors hover:scale-110 transform duration-300" aria-label="Facebook">
+                 <Facebook size={20} />
+              </a>
+              <a href="https://www.instagram.com/renzoacademy" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#E1306C] transition-colors hover:scale-110 transform duration-300" aria-label="Instagram">
+                 <Instagram size={20} />
+              </a>
+              <a href="https://www.tiktok.com/@renzo.bro" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#ff0050] transition-colors hover:scale-110 transform duration-300" aria-label="TikTok">
+                 <TikTokIcon size={20} />
+              </a>
+              <a href="https://whatsapp.com/channel/0029Vaz0qXE6hENuVgR3J71W" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#25D366] transition-colors hover:scale-110 transform duration-300" aria-label="WhatsApp">
+                 <WhatsAppIcon size={20} />
+              </a>
+            </div>
+
+            <p className="mb-4 text-sm">&copy; {new Date().getFullYear()} Renzo Academy. All rights reserved.</p>
+            
+            <p className="text-xs text-gray-700 max-w-2xl mx-auto leading-relaxed">
+              I am not registered with the SEC, CSE, CBSL, or any other financial regulatory authority. All information shared on this platform is for educational and informational purposes only and should not be considered financial or investment advice.
+            </p>
         </div>
       </footer>
     </main>

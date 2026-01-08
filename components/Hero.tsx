@@ -9,7 +9,7 @@ interface HeroProps {
 }
 
 // Declare custom element for TypeScript
-declare module 'react' {
+declare global {
   namespace JSX {
     interface IntrinsicElements {
       'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
