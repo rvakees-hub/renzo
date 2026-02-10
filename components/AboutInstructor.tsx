@@ -71,7 +71,7 @@ const AboutInstructor: React.FC = () => {
              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
              {/* Optimization: Added explicit dimensions and fetchpriority low */}
              <img 
-                src="https://res.cloudinary.com/duhqg4u4k/image/upload/f_auto,q_auto,w_800/v1766867306/Clients/20251227_135137_dg6vip.jpg" 
+                src="https://res.cloudinary.com/dv5sa7sqs/image/upload/v1769619972/20251227_135137_wfxdxu.jpg" 
                 alt="Renzo - Investment Strategist" 
                 className="w-full h-full object-cover" 
                 loading="lazy"

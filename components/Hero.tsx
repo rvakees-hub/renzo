@@ -8,19 +8,8 @@ interface HeroProps {
   onOpenModal: () => void;
 }
 
-// Declare custom element for TypeScript
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        'media-id'?: string;
-        aspect?: string;
-        autoplay?: boolean;
-        muted?: boolean;
-      };
-    }
-  }
-}
+// Custom element 'wistia-player' is used below. 
+// We suppress the TS error locally to avoid breaking global JSX namespace.
 
 const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -33,9 +22,9 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   // Triple the ticker items to ensure smooth infinite looping
   const tickerItems = [...HERO_TICKER_ITEMS, ...HERO_TICKER_ITEMS, ...HERO_TICKER_ITEMS];
 
-  // Countdown state for Jan 20, 2026
+  // Countdown state for March 3, 2026
   const calculateTimeLeft = () => {
-    const targetDate = new Date('2026-01-20T00:00:00');
+    const targetDate = new Date('2026-03-03T00:00:00');
     const difference = targetDate.getTime() - new Date().getTime();
     
     let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -117,8 +106,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
 
       {/* Urgency Bar */}
       <div className="fixed top-0 left-0 w-full z-50 bg-brand-blue/90 backdrop-blur-md text-white text-xs sm:text-sm py-2 flex justify-center items-center font-medium border-b border-white/10 shadow-lg shadow-brand-blue/10">
-        <span className="hidden sm:inline font-semibold tracking-wide">🚀 New Batch Starting Soon - Trained 500+ Students</span>
-        <span className="sm:hidden font-semibold">🚀 Batch Closing Soon</span>
+        <span className="hidden sm:inline font-semibold tracking-wide">🚀 New Batch Starting March 3 - Trained 500+ Students</span>
+        <span className="sm:hidden font-semibold">🚀 Batch Closing March 3</span>
         <span className="mx-3 text-white/40">|</span>
         <div className="flex items-center gap-2 font-mono font-bold bg-black/30 px-3 py-1 rounded text-yellow-300 border border-white/10">
            <span>{String(timeLeft.days).padStart(2, '0')}d</span>:
@@ -135,7 +124,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
           </span>
-          Next Enrollment Ends Jan 20, 2026
+          Next Enrollment Ends March 3, 2026
         </div>
         
         {/* Headline */}
@@ -153,6 +142,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
         <div ref={videoRef} className="w-full max-w-4xl mb-14 relative group z-20">
            <div className="absolute -inset-1 bg-gradient-to-r from-brand-blue/20 to-purple-500/20 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition duration-1000"></div>
            <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-blue/20 bg-brand-gray/50 backdrop-blur-sm">
+              {/* @ts-ignore */}
               <wistia-player media-id="s46leuqw1t" aspect="1.7777777777777777" autoplay></wistia-player>
            </div>
         </div>
@@ -170,7 +160,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           </button>
           <p className="mt-4 text-sm text-gray-500 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500"></span>
-            Limited spots available for Jan 2026 Batch
+            Limited spots available for March 2026 Batch
           </p>
         </div>
 
