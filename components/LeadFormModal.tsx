@@ -64,10 +64,10 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
         new Promise(resolve => setTimeout(resolve, 2000))
     ]);
 
-    // 3. Redirect to PayHere
+    // 3. Redirect to the signup page
     // We purposely do NOT close the modal so the "Redirecting..." spinner remains visible 
     // while the browser handles the navigation.
-    window.location.href = "https://payhere.lk/pay/o6e4bc6cd";
+    window.location.href = "https://www.renzoacademy.com/student-signup/renzobro-online";
   };
 
   return (
@@ -136,10 +136,10 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
           >
             {isSubmitting ? (
                 <>
-                    <Loader2 size={20} className="animate-spin" /> Redirecting to Payment...
+                    <Loader2 size={20} className="animate-spin" /> Redirecting...
                 </>
             ) : (
-                'Proceed to Payment'
+                'Complete Registration'
             )}
           </button>
           
