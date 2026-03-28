@@ -22,9 +22,14 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   // Triple the ticker items to ensure smooth infinite looping
   const tickerItems = [...HERO_TICKER_ITEMS, ...HERO_TICKER_ITEMS, ...HERO_TICKER_ITEMS];
 
-  // Countdown state for March 3, 2026
+  // Countdown state for 24 hours from now
+  const [targetDate] = useState(() => {
+    const date = new Date();
+    date.setHours(date.getHours() + 24);
+    return date;
+  });
+
   const calculateTimeLeft = () => {
-    const targetDate = new Date('2026-03-03T00:00:00');
     const difference = targetDate.getTime() - new Date().getTime();
     
     let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -106,14 +111,17 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
 
       {/* Urgency Bar */}
       <div className="fixed top-0 left-0 w-full z-50 bg-brand-blue/90 backdrop-blur-md text-white text-xs sm:text-sm py-2 flex justify-center items-center font-medium border-b border-white/10 shadow-lg shadow-brand-blue/10">
-        <span className="hidden sm:inline font-semibold tracking-wide">🚀 New Batch Starting March 3 - Trained 500+ Students</span>
-        <span className="sm:hidden font-semibold">🚀 Batch Closing March 3</span>
+        <span className="hidden sm:inline font-semibold tracking-wide">🔥 Special Offer - Join the Accelerator Today!</span>
+        <span className="sm:hidden font-semibold">🔥 Offer Ends Soon</span>
         <span className="mx-3 text-white/40">|</span>
-        <div className="flex items-center gap-2 font-mono font-bold bg-black/30 px-3 py-1 rounded text-yellow-300 border border-white/10">
-           <span>{String(timeLeft.days).padStart(2, '0')}d</span>:
-           <span>{String(timeLeft.hours).padStart(2, '0')}h</span>:
-           <span>{String(timeLeft.minutes).padStart(2, '0')}m</span>:
-           <span>{String(timeLeft.seconds).padStart(2, '0')}s</span>
+        <div className="flex items-center gap-2">
+          <span className="text-white/80 mr-1">Offer ends in:</span>
+          <div className="flex items-center gap-2 font-mono font-bold bg-black/30 px-3 py-1 rounded text-yellow-300 border border-white/10">
+             <span>{String(timeLeft.days).padStart(2, '0')}d</span>:
+             <span>{String(timeLeft.hours).padStart(2, '0')}h</span>:
+             <span>{String(timeLeft.minutes).padStart(2, '0')}m</span>:
+             <span>{String(timeLeft.seconds).padStart(2, '0')}s</span>
+          </div>
         </div>
       </div>
 
@@ -124,7 +132,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
           </span>
-          Next Enrollment Ends March 3, 2026
+          Limited Time Offer - Enroll Now
         </div>
         
         {/* Headline */}
@@ -160,7 +168,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           </button>
           <p className="mt-4 text-sm text-gray-500 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500"></span>
-            Limited spots available for March 2026 Batch
+            Limited spots available for this intake
           </p>
         </div>
 

@@ -69,7 +69,7 @@ const AboutInstructor: React.FC = () => {
            <div className="absolute inset-0 bg-brand-blue/20 blur-[120px] rounded-full pointer-events-none" />
            <div ref={imageRef} className="relative z-10 w-full max-w-md h-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
-             {/* Optimization: Added explicit dimensions and fetchpriority low */}
+             {/* Optimization: Added explicit dimensions and fetchPriority low */}
              <img 
                 src="https://res.cloudinary.com/dv5sa7sqs/image/upload/v1769619972/20251227_135137_wfxdxu.jpg" 
                 alt="Renzo - Investment Strategist" 
@@ -78,7 +78,7 @@ const AboutInstructor: React.FC = () => {
                 width="800"
                 height="1000"
                 // @ts-ignore
-                fetchpriority="low"
+                fetchPriority="low"
              />
              <div className="absolute bottom-8 left-8 z-20">
                <p className="font-serif italic text-3xl mb-1">Kantharuban Isaiyalan </p>
